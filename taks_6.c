@@ -54,55 +54,6 @@ envlist_t *start_env_list(char **env)
 	}
 	return (head);
 }
-
-/**
- * addNodeAtIndex - add node at index with string
- * @head: double pointer to head
- * @index: index to add at
- * @str: string to add
- * Return: address of node added
- */
-envlist_t *addNodeAtIndex(envlist_t **head, int index, char *str)
-{
-	register int i = 0;
-	envlist_t *newNode, *current;
-	char *newStr;
-
-	current = *head;
-	if (!str)
-		return (NULL);
-	newNode  = malloc(sizeof(envlist_t));
-	if (!newNode)
-	{
-		perror("Malloc failed\n");
-		exit(errno);
-	}
-	newStr = _strdup(str);
-	if (!newStr)
-	{
-		free(newNode);
-		perror("Malloc failed\n");
-		exit(errno);
-	}
-
-	newNode->name = newStr;
-	newNode->next = NULL;
-
-	while (i < index - 1)
-	{
-		if (current->next == NULL)
-		{
-			free(newNode);
-			return (NULL);
-		}
-		current = current->next;
-		i++;
-	}
-	newNode->next = current->next;
-	current->next = newNode;
-	return (newNode);
-}
-
 /**
  * get_nodeint_at_index -  a function that returns the nth node of a
  * listint_t linked list.

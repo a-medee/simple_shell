@@ -38,7 +38,7 @@ int find_binary(user_t *input, program_t *variable)
 		tmp = in ? token - 2 : token;
 		if (*tmp == 0 && stat(input->args[0], &state) == 0)
 		{
-			variable->fullPath = input->args[0];
+			variable->binary = input->args[0];
 			free(copy);
 			return (1);
 		}
@@ -50,14 +50,14 @@ int find_binary(user_t *input, program_t *variable)
 		if (stat(buffer, &state) == 0)
 		{
 			free(copy);
-			variable->fullPath = buffer;
+			variable->binary = buffer;
 			return (1);
 		}
 		buffer[0] = '\0';
 		token = _strtok(NULL, ":");
 		in = 1;
 	}
-	variable->fullPath = input->args[0];
+	variable->binary = input->args[0];
 	free(copy);
 	return (0);
 }
@@ -78,13 +78,13 @@ int handle_path(user_t *input, program_t *variables)
 	path = _strdup(variables->path);
 	if (!path)
 	{
-		variables->fullPath = input->args[0];
+		variables->binary = input->args[0];
 		free(path);
 		return (1);
 	}
 	if (*path == ':' && stat(input->args[0], &state) == 0)
 	{
-		variables->fullPath = input->args[0];
+		variables->binary = input->args[0];
 		free(path);
 		return (1);
 	}

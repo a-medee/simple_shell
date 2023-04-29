@@ -92,13 +92,14 @@ size_t print_listint(const envlist_t *h)
 }
 
 /**
- * deleteNodeAtIndex - deletes the node at index
+ * delete_index_node - deletes the node at index
  * index of a envlist_t linked list
  * @head: double pointer to head of list
  * @index: index of node to be deleted
- * Return: 1 if success, -1 if fail
+ *
+ * Return: 1 if successful, -1 otherwise
  */
-int deleteNodeAtIndex(envlist_t **head, unsigned int index)
+int delete_index_node(envlist_t **head, unsigned int index)
 {
 	envlist_t *current;
 	envlist_t *next;

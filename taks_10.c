@@ -48,8 +48,8 @@ int exit_builtins(user_t *input, program_t *variables)
 	if (number == 1)
 	{
 		free_some_struct_(input, variables);
-		if (variables->errorStatus)
-			exit(variables->errorStatus);
+		if (variables->e_stat)
+			exit(variables->e_stat);
 		exit(EXIT_SUCCESS);
 	}
 	else if (number > 1)

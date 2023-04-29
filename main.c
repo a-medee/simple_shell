@@ -22,10 +22,9 @@ int main(__attribute__((unused))int argc, char **arg)
 	input.user_input = NULL;
 
 	variables.path = _getenv("PATH", environ);
-	variables.fullPath = NULL;
-	variables.lineCounter = 0;
+	variables.binary = NULL;
 	variables.pgr_name = NULL;
-	variables.errorStatus = 0;
+	variables.e_stat = 0;
 	variables.pgr_name = arg[0];
 
 	super_simple_shell(&input, &variables);

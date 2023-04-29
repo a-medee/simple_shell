@@ -40,7 +40,6 @@ void handling_argument(user_t *input, program_t *variables)
 
 	input->args = NULL;
 	input->argv = NULL;
-	variables->lineCounter++;
 
 	if (isatty(STDIN_FILENO))
 		write(STDERR_FILENO, "$ ", 2);
@@ -51,8 +50,8 @@ void handling_argument(user_t *input, program_t *variables)
 		free_some_struct_(input, variables);
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "\n", 1);
-		if (variables->errorStatus)
-			exit(variables->errorStatus);
+		if (variables->e_stat)
+			exit(variables->e_stat);
 		exit(EXIT_SUCCESS);
 
 	}
@@ -116,9 +115,9 @@ void children_job_equal_zero(user_t *input, program_t *variables)
 	}
 	if (children_pid == 0)
 	{
-		if (execve(variables->fullPath, input->args, input->argv) == -1)
+		if (execve(variables->binary, input->args, input->argv) == -1)
 		{
-			_error_function(variables->pgr_name, variables->fullPath);
+			_error_function(variables->pgr_name, variables->binary);
 			free_some_struct_(input, variables);
 			free_args(input->argv);
 		}
@@ -127,7 +126,7 @@ void children_job_equal_zero(user_t *input, program_t *variables)
 	{
 		wait(&status);
 		if (WIFEXITED(status))
-			variables->errorStatus = WEXITSTATUS(status);
+			variables->e_stat = WEXITSTATUS(status);
 		free_all(input, variables);
 		free_args(input->argv);
 	}
