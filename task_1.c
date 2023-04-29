@@ -45,7 +45,7 @@ void handling_argument(user_t *input, program_t *variables)
 	if (isatty(STDIN_FILENO))
 		write(STDERR_FILENO, "$ ", 2);
 
-	len = _getline(&(input->user_input), &n, stdin);
+	len = getline(&(input->user_input), &n, stdin);
 	if (len == -1)
 	{
 		free_some_struct_(input, variables);

@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 
 /**
@@ -11,7 +12,7 @@ void ctr_c_handler(__attribute__((unused))int sign)
 {
 	signal(SIGINT, ctr_c_handler);
 	write(STDOUT_FILENO, "\n", 1);
-	fflush(stdin);
+	fflush(stdout);
 	exit(0);
 }
 
