@@ -14,8 +14,6 @@ int main(__attribute__((unused))int argc, char **arg)
 	user_t input;
 	program_t variables;
 
-	signal(SIGINT, ctr_c_handler);
-
 	input.env = start_env_list(environ);
 	input.argv = NULL;
 	input.args = NULL;

@@ -1,20 +1,4 @@
 #include "main.h"
-#include <stdio.h>
-
-
-/**
- * ctr_c_handler - catches SIGINT signal and reset signal
- * @sign: signal from stdint
- *
- * Return a type void element
- */
-void ctr_c_handler(__attribute__((unused))int sign)
-{
-	signal(SIGINT, ctr_c_handler);
-	write(STDOUT_FILENO, "\n", 1);
-	fflush(stdout);
-	exit(0);
-}
 
 /**
 * args_number - the number of arguments

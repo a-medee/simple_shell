@@ -96,7 +96,6 @@ void children_job_equal_zero(user_t *, program_t *);
 void handle_comment_from_input(char *str);
 void construct_envp(user_t *, program_t *);
 char *_getenv(char *input, char **environ);
-void ctr_c_handler(int sigint);
 
 /**
  * struct builtins - a structure to execute builtins functions
